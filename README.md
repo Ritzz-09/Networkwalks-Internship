@@ -42,6 +42,10 @@ This repository serves as the official portfolio and technical documentation for
   * **PM1 — Web Application & Domain Footprinting:** WHOIS, WhatWeb, nslookup, cURL, WAFW00F, and DNSRecon (Identified WordPress 7.1.4, Apache, ModSecurity WAF, BIND nameservers, MX/SPF/SRV records).
   * **PM5 — Zenmap Network Scanning:** Ping sweep (`nmap -sn 192.168.1.0/24`), 8 live hosts discovered, Layer 2 MAC resolution, radial topology graph generation, and ARP mitigation analysis.
 * **Automation Suite:** `ping_sweep.sh` (Automated LAN discovery and ARP resolution tool).
+* **Formal Submission Deliverables:**
+  * 📄 [**Week2-Final-Report.docx**](week2/final-report/Week2-Final-Report.docx) — Formatted Microsoft Word Technical Report
+  * 📑 [**Week2-Final-Report.pdf**](week2/final-report/Week2-Final-Report.pdf) — Print-ready 11-page publication-grade PDF report
+  * 📝 [**Week2-Final-Report.md**](week2/final-report/Week2-Final-Report.md) — Source Technical Report in Markdown
 
 👉 **Read the full module runbook and evidence report:** [**week2/README.md**](week2/)
 
@@ -70,6 +74,10 @@ Networkwalks-Internship/
 │       └── virtualbox-default-nat.png            # Default NAT reference (troubleshooting)
 └── week2/                                        # Week 2: Information Gathering & Network Scanning
     ├── README.md                                 # Master Week 2 report & operational runbook
+    ├── final-report/                             # Week 2 Formal Technical Report Deliverables
+    │   ├── Week2-Final-Report.docx               # Formatted Word Document Report
+    │   ├── Week2-Final-Report.pdf                # Print-Ready 11-Page PDF Technical Report
+    │   └── Week2-Final-Report.md                 # Complete Markdown Report Source
     ├── PM1-footprinting/                         # Passive & active OSINT footprinting suite
     │   ├── tool1-whois/                          # WHOIS domain registration intelligence
     │   │   ├── whois-output.txt                  # Raw WHOIS query response

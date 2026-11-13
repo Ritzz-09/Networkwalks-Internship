@@ -1,0 +1,25 @@
+Starting Nmap 7.993 ( https://nmap.org ) at 2026-11-13 18:19 +0530
+Nmap scan report for 192.168.1.1
+Host is up (0.0070s latency).
+MAC Address: 54:47:E8:A6:B2:D3 (Syrotech Networks.)
+Nmap scan report for 192.168.1.33
+Host is up (0.015s latency).
+MAC Address: 5A:5A:02:5B:74:8D (Unknown)
+Nmap scan report for 192.168.1.35
+Host is up (0.071s latency).
+MAC Address: C6:BC:B3:DD:A7:B3 (Unknown)
+Nmap scan report for 192.168.1.197
+Host is up (6.4s latency).
+MAC Address: 5A:5A:00:DE:4F:CB (Unknown)
+Nmap scan report for 192.168.1.208
+Host is up (0.028s latency).
+MAC Address: 5A:5A:00:DE:49:93 (Unknown)
+Nmap scan report for 192.168.1.230
+Host is up (1.2s latency).
+MAC Address: 5A:5A:00:DE:49:9D (Unknown)
+Nmap scan report for 192.168.1.237
+Host is up (1.0s latency).
+MAC Address: 5A:5A:00:DE:49:BD (Unknown)
+Nmap scan report for 192.168.1.36
+Host is up.
+Nmap done: 256 IP addresses (8 hosts up) scanned in 11.43 seconds

@@ -14,13 +14,13 @@ This repository serves as the official portfolio and technical documentation for
 | Week | Project Module & Topic | Environment & Focus | Documentation Link | Status |
 |:---:|---|---|:---:|:---:|
 | **Week 1** | **Cybersecurity Laboratory Environment Setup** | Oracle VirtualBox, Kali Linux, NAT Network (`10.0.0.0/24`), Routing, ICMP & DNS Verification | [📁 Week 1 Documentation](week1/) | ✅ Completed |
-| **Week 2** | *Upcoming Module* | *To be updated* | *TBD* | ⏳ Pending |
+| **Week 2** | **Information Gathering, Footprinting & Network Scanning** | OSINT, WHOIS, WhatWeb, nslookup, cURL, WAFW00F, DNSRecon, Zenmap / Nmap (`192.168.1.0/24`) | [📁 Week 2 Documentation](week2/) | ✅ Completed |
 | **Week 3** | *Upcoming Module* | *To be updated* | *TBD* | ⏳ Pending |
 | **Week 4** | *Upcoming Module* | *To be updated* | *TBD* | ⏳ Pending |
 
 ---
 
-## 🚀 Week 1 Quick Navigation
+## 🚀 Quick Navigation
 
 ### [Week 1: Cybersecurity Laboratory Environment Setup](week1/)
 
@@ -34,6 +34,17 @@ This repository serves as the official portfolio and technical documentation for
 
 👉 **Read the full module runbook and evidence report:** [**week1/README.md**](week1/)
 
+### [Week 2: Information Gathering, Footprinting & Network Scanning](week2/)
+
+* **External Target:** `networkwalks.com` (Resolved IP: `192.232.216.135`)
+* **Internal Subnet:** `192.168.1.0/24` (Gateway: `192.168.1.1` - Syrotech Networks)
+* **Reconnaissance Modules:**
+  * **PM1 — Web Application & Domain Footprinting:** WHOIS, WhatWeb, nslookup, cURL, WAFW00F, and DNSRecon (Identified WordPress 7.1.4, Apache, ModSecurity WAF, BIND nameservers, MX/SPF/SRV records).
+  * **PM5 — Zenmap Network Scanning:** Ping sweep (`nmap -sn 192.168.1.0/24`), 8 live hosts discovered, Layer 2 MAC resolution, radial topology graph generation, and ARP mitigation analysis.
+* **Automation Suite:** `ping_sweep.sh` (Automated LAN discovery and ARP resolution tool).
+
+👉 **Read the full module runbook and evidence report:** [**week2/README.md**](week2/)
+
 ---
 
 ## 📂 Repository Structure
@@ -41,22 +52,58 @@ This repository serves as the official portfolio and technical documentation for
 ```
 Networkwalks-Internship/
 ├── README.md                                     # Main repository overview & syllabus
-└── week1/                                        # Week 1: Cybersecurity Lab Environment Setup
-    ├── README.md                                 # Week 1 technical report & operational runbook
-    ├── verify_lab.sh                             # Automated 5-point verification test suite
-    ├── troubleshoot_network.sh                   # Network diagnostic & auto-remediation tool
-    ├── configure_static_ip.sh                    # Static IP & persistent gateway configuration script
-    └── images/                                   # Empirical screenshots & network diagrams
-        ├── kali-linux-desktop.png                # Kali Linux desktop interface
-        ├── network-topology.png                  # Lab network topology infographic
-        ├── nat-network-configuration.png         # Cyberlab-NAT (10.0.0.0/24) configuration
-        ├── virtualbox-adapter-configuration.png  # VM Adapter 1 attached to Cyberlab-NAT
-        ├── initial-routing-table.png             # Initial routing table & DHCP baseline
-        ├── kali-ip-address.png                   # Static IP configuration (10.0.0.2/24) on eth0
-        ├── default-gateway.png                   # Default gateway (10.0.0.1) routing verification
-        ├── ping-gateway.png                      # Gateway (10.0.0.1) & Internet (8.8.8.8) ping tests
-        ├── ping-internet.png                     # Kernel route persistence & reachability
-        └── virtualbox-default-nat.png            # Default NAT reference (troubleshooting)
+├── week1/                                        # Week 1: Cybersecurity Lab Environment Setup
+│   ├── README.md                                 # Week 1 technical report & operational runbook
+│   ├── verify_lab.sh                             # Automated 5-point verification test suite
+│   ├── troubleshoot_network.sh                   # Network diagnostic & auto-remediation tool
+│   ├── configure_static_ip.sh                    # Static IP & persistent gateway configuration script
+│   └── images/                                   # Empirical screenshots & network diagrams
+│       ├── kali-linux-desktop.png                # Kali Linux desktop interface
+│       ├── network-topology.png                  # Lab network topology infographic
+│       ├── nat-network-configuration.png         # Cyberlab-NAT (10.0.0.0/24) configuration
+│       ├── virtualbox-adapter-configuration.png  # VM Adapter 1 attached to Cyberlab-NAT
+│       ├── initial-routing-table.png             # Initial routing table & DHCP baseline
+│       ├── kali-ip-address.png                   # Static IP configuration (10.0.0.2/24) on eth0
+│       ├── default-gateway.png                   # Default gateway (10.0.0.1) routing verification
+│       ├── ping-gateway.png                      # Gateway (10.0.0.1) & Internet (8.8.8.8) ping tests
+│       ├── ping-internet.png                     # Kernel route persistence & reachability
+│       └── virtualbox-default-nat.png            # Default NAT reference (troubleshooting)
+└── week2/                                        # Week 2: Information Gathering & Network Scanning
+    ├── README.md                                 # Master Week 2 report & operational runbook
+    ├── PM1-footprinting/                         # Passive & active OSINT footprinting suite
+    │   ├── tool1-whois/                          # WHOIS domain registration intelligence
+    │   │   ├── whois-output.txt                  # Raw WHOIS query response
+    │   │   └── whois.png                         # CLI execution screenshot
+    │   ├── tool2-whatweb/                        # Web technology stack fingerprinting
+    │   │   ├── whatweb-output.txt                # CMS, server & component details
+    │   │   └── whatweb.png                       # CLI execution screenshot
+    │   ├── tool3-nslookup/                       # DNS address resolution
+    │   │   ├── nslookup-output.txt               # DNS A-record query result
+    │   │   └── nslookup.png                      # CLI execution screenshot
+    │   ├── tool4-curl/                           # HTTP response header analysis
+    │   │   ├── curl-output.txt                   # HTTP headers & cookie inspection
+    │   │   └── curl.png                          # CLI execution screenshot
+    │   ├── tool5-waf/                            # Web Application Firewall detection
+    │   │   ├── waf-output.txt                    # WAFW00F ModSecurity detection output
+    │   │   └── waf.png                           # CLI execution screenshot
+    │   └── tool6-dnsrecon/                       # DNS zone & service enumeration
+    │       ├── dnsrecon-output.txt               # SOA, NS, MX, TXT, and SRV records
+    │       └── dnsrecon.png                      # CLI execution screenshot
+    └── PM5-zenmap-network-scanning/              # LAN host discovery & topology mapping
+        ├── README.md                             # PM5 dedicated module report
+        ├── zenmap-ping-scan-output.txt           # Formatted Nmap ping sweep log (8 hosts)
+        ├── scripts/
+        │   └── ping_sweep.sh                     # Automated LAN ping sweep & ARP tool
+        ├── reports/
+        │   ├── PM5_Task_Answers_and_Evidence_RITHISH_SP.pdf # Practical answers & evidence PDF
+        │   └── topology.pdf                      # Exported Zenmap vector topology PDF
+        └── images/
+            ├── evidence-1-ping-scan-overview.png # Zenmap ping sweep target & output
+            ├── evidence-2-scan-summary.png       # Execution metrics & host count
+            ├── evidence-3-localhost-selection.png# Selected localhost (192.168.1.36) view
+            ├── evidence-4-topology-layout.png    # Initial topology graph layout
+            ├── evidence-5-topology-detail.png    # Adjusted ring topology graph
+            └── topology-diagram.png              # High-resolution rendered topology map
 ```
 
 ---

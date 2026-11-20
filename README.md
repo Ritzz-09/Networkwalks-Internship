@@ -15,7 +15,7 @@ This repository serves as the official portfolio and technical documentation for
 |:---:|---|---|:---:|:---:|
 | **Week 1** | **Cybersecurity Laboratory Environment Setup** | Oracle VirtualBox, Kali Linux, NAT Network (`10.0.0.0/24`), Routing, ICMP & DNS Verification | [📁 Week 1 Documentation](week1/) | ✅ Completed |
 | **Week 2** | **Information Gathering, Footprinting & Network Scanning** | OSINT, WHOIS, WhatWeb, nslookup, cURL, WAFW00F, DNSRecon, Zenmap / Nmap (`192.168.1.0/24`) | [📁 Week 2 Documentation](week2/) | ✅ Completed |
-| **Week 3** | *Upcoming Module* | *To be updated* | *TBD* | ⏳ Pending |
+| **Week 3** | **Password Cracking, Hash Extraction & Cryptanalysis** | John the Ripper (JTR), RockYou wordlist, PDF Hash Extraction (`$pdf$4*4*128*...`), Networkwalks Online Tools | [📁 Week 3 Documentation](week3/) | ✅ Completed |
 | **Week 4** | *Upcoming Module* | *To be updated* | *TBD* | ⏳ Pending |
 
 ---
@@ -49,6 +49,19 @@ This repository serves as the official portfolio and technical documentation for
 
 👉 **Read the full module runbook and evidence report:** [**week2/README.md**](week2/)
 
+### [Week 3: Password Cracking, Hash Extraction & Cryptanalysis](week3/)
+
+* **Target Documents:** Encrypted PDF archives (`My Locked PDF1.pdf`, `My Locked PDF1 (for NW Tools Lab WK3-PM2).pdf`)
+* **Encryption Format:** PDF Revision 4, 128-bit key length (`$pdf$4*4*128*...`)
+* **Cryptanalysis Modules:**
+  * **PM1 — Password Cracking with John the Ripper (JTR):** Extracted hash targeting `hash1.txt`, dictionary attack executed using `/usr/share/wordlists/rockyou.txt` on Kali Linux. Password cracked: `good-luck`. Flag captured: `nw{cybersecurity_flag_captured_2608}`.
+  * **PM2 — Password Cracking with Networkwalks Web Tools:** Extracted `$pdf$` hash via Networkwalks online Hash Calculator, dictionary attack performed via Networkwalks Password Cracker suite. Password cracked: `password1`. Flag captured: `nw{networkwalks_flag1_jtr_270521_1}`.
+* **Captured Flags:**
+  * 🚩 Flag 1: `nw{cybersecurity_flag_captured_2608}`
+  * 🚩 Flag 2: `nw{networkwalks_flag1_jtr_270521_1}`
+
+👉 **Read the full module runbook and evidence report:** [**week3/README.md**](week3/)
+
 ---
 
 ## 📂 Repository Structure
@@ -72,7 +85,7 @@ Networkwalks-Internship/
 │       ├── ping-gateway.png                      # Gateway (10.0.0.1) & Internet (8.8.8.8) ping tests
 │       ├── ping-internet.png                     # Kernel route persistence & reachability
 │       └── virtualbox-default-nat.png            # Default NAT reference (troubleshooting)
-└── week2/                                        # Week 2: Information Gathering & Network Scanning
+├── week2/                                        # Week 2: Information Gathering & Network Scanning
     ├── README.md                                 # Master Week 2 report & operational runbook
     ├── final-report/                             # Week 2 Formal Technical Report Deliverables
     │   ├── Week2-Final-Report.docx               # Formatted Word Document Report
@@ -112,6 +125,19 @@ Networkwalks-Internship/
             ├── evidence-4-topology-layout.png    # Initial topology graph layout
             ├── evidence-5-topology-detail.png    # Adjusted ring topology graph
             └── topology-diagram.png              # High-resolution rendered topology map
+└── week3/                                        # Week 3: Password Cracking & Cryptanalysis
+    ├── README.md                                 # Master Week 3 technical report & lab guide
+    ├── PM1- password cracking with JTR/          # Module PM1: Offline cryptanalysis with JTR
+    │   ├── flag.txt                              # Captured CTF flag 1 (nw{cybersecurity_flag_captured_2608})
+    │   ├── hash1.txt                             # Extracted PDF crackable hash ($pdf$4*4*128*...)
+    │   ├── cracked pdf.png                       # Evidence: Unlocked PDF with flag display
+    │   └── password cracked with JTR.png         # Evidence: JTR dictionary attack completion
+    └── PM2- password cracking with nw tools/     # Module PM2: Online cryptanalysis with NW tools
+        ├── flag.txt                              # Captured CTF flag 2 (nw{networkwalks_flag1_jtr_270521_1})
+        ├── hash2.txt                             # Extracted PDF crackable hash
+        ├── hash-calculator.png                   # Evidence: Networkwalks hash extraction
+        ├── password-cracker.png                  # Evidence: Web dictionary attack match
+        └── opened pdf.png                        # Evidence: Unlocked PDF with flag display
 ```
 
 ---

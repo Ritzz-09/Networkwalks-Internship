@@ -1,0 +1,31 @@
+id	full_name	job_title	department	monthly_salary_zar	date_joined
+3	Dr. Johan van der Merwe	Medical Director	Management	160000	2007-01-22
+2	Sarah Botha	Chief Financial Officer	Finance	152000	2011-07-01
+1	Dr. Rajesh Naidoo	Chief Pathologist	Diagnostics Lab	138000	2009-03-16
+24	Dr. Vikram Chetty	Anaesthetist	Theatre	135000	2011-06-13
+4	Dr. Anita Naicker	Consultant Cardiologist	Cardiology	132000	2012-09-10
+21	Dr. Suresh Moodley	Consultant Radiologist	Radiology	130000	2012-02-28
+5	Dr. Ahmed Kara	Consultant Physician	Internal Medicine	128000	2013-02-18
+22	Dr. Fatima Patel	Pediatrician	Pediatrics	118000	2013-10-17
+7	Michael Roberts	HR Director	Human Resources	96000	2010-11-15
+6	Dr. Yusuf Cassim	Senior Registrar	Emergency & Trauma	74000	2018-05-04
+15	Kagiso Sithole	Pharmacist	Pharmacy	61000	2014-09-08
+9	Jameel Malik	IT Systems Administrator	IT	58000	2015-04-12
+25	David Smith	Facilities Manager	Operations	52000	2014-01-27
+23	Nisha Singh	Physiotherapist	Rehabilitation	48000	2016-11-09
+10	Thabo Molefe	Network Engineer	IT	46000	2017-10-02
+17	Themba Nkosi	Radiographer	Radiology	44000	2016-07-30
+18	Palesa Radebe	Radiographer	Radiology	43000	2017-04-11
+14	Zanele Mahlangu	Nursing Sister	Theatre	42000	2013-03-25
+19	Deepak Pillay	Lab Technologist	Diagnostics Lab	41000	2015-05-20
+29	Peter van Wyk	Procurement Officer	Supply Chain	38000	2015-08-24
+13	Bongani Ndlovu	Registered Nurse	Cardiology	35000	2015-12-01
+20	Kavitha Govender	Lab Technician	Diagnostics Lab	35000	2018-08-06
+11	Nomvula Khumalo	Registered Nurse	Emergency & Trauma	34000	2016-01-19
+12	Lerato Mokoena	Registered Nurse	Pediatrics	33000	2017-06-07
+8	Susan Pretorius	HR Officer	Human Resources	32000	2016-08-23
+26	Karen O'Connor	Billing Administrator	Finance	29000	2018-03-19
+27	James Wilson	Security Supervisor	Operations	27000	2019-09-02
+16	Naledi Zulu	Pharmacy Assistant	Pharmacy	26000	2019-02-14
+30	Andile Mbeki	Ward Clerk	Administration	21000	2019-11-05
+28	Linda Fourie	Receptionist	Front Office	19000	2020-02-10

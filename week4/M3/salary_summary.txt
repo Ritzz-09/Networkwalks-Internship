@@ -1,0 +1,2 @@
+total_employees	minimum_salary	maximum_salary	average_salary
+30	19000	160000	67566.67

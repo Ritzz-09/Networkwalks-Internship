@@ -1,0 +1,2 @@
+total_employees	minimum_salary	maximum_salary	average_salary	total_monthly_payroll	average_annual_salary
+30	19000	160000	67566.67	2027000	810800.00

@@ -1,0 +1,8 @@
+  File: mediroza_db_backup_2019.sql
+  Size: 6346      	Blocks: 16         IO Block: 4096   regular file
+Device: 8,1	Inode: 3056567     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/ritzz-07)   Gid: ( 1000/ritzz-07)
+Access: 2026-11-24 07:01:11.486031303 +0530
+Modify: 2026-11-24 06:57:19.482030322 +0530
+Change: 2026-11-24 06:57:32.878030378 +0530
+ Birth: 2026-11-24 06:57:19.478030322 +0530

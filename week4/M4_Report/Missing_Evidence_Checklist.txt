@@ -1,0 +1,141 @@
+================================================================================
+                    MEDIROZA GENERAL HOSPITAL PENETRATION TEST
+                   EVIDENCE GAP AUDIT & MISSING EVIDENCE CHECKLIST
+================================================================================
+Document Classification : CONFIDENTIAL
+Project / Engagement    : Networkwalks Cybersecurity Internship (Week 4, Batch B083)
+Assessment Target       : https://medirozahospital.com
+Assessment Type         : Black-box Web Application & Forensic Assessment
+Lead Analyst            : Rithish S P (Security Consultant / Forensics Analyst)
+Audit Date              : 2026-11-24
+
+================================================================================
+1. EXECUTIVE SUMMARY OF EVIDENCE AUDIT
+================================================================================
+A comprehensive digital forensics and evidence audit was performed across the
+Mediroza project workspace prior to authoring the formal penetration testing report.
+The audit evaluated all raw text logs, exfiltrated files, hash records, decrypted
+reports, and graphical screenshots across Reconnaissance, M1, M2, and M3.
+
+All core technical milestones possess verifiable underlying technical data:
+- Reconnaissance has complete CLI command log files (dig, nmap, whatweb, curl).
+- M1 possesses genuine screenshots of the SQL injection entry point and portal bypass.
+- M2 possesses John the Ripper CLI cracking screenshot, hashes, and 3 decrypted PDFs.
+- M3 possesses the full raw SQL dump, integrity hashes, and detailed analytical tables.
+
+In accordance with strict professional standards, where an empirical finding is backed
+by a text log or analytical table but lacks a native screenshot capture from the
+testing workstation, it has been formally cataloged below and designated in the
+technical report with the explicit tag:
+    [SCREENSHOT REQUIRED - DESCRIPTION]
+
+No artificial, fabricated, or simulated screenshots have been generated.
+
+================================================================================
+2. ACQUIRED AND VERIFIED EVIDENCE (PRESENT IN WORKSPACE)
+================================================================================
+The following 18 primary evidence assets are verified present in the workspace:
+
+[ACQUIRED] RECON-01 (Text Log)  : Recon/dns.txt (dig DNS A-record to 199.188.201.16)
+[ACQUIRED] RECON-02 (Text Log)  : Recon/nmap.txt (Nmap port 80/443 HAProxy detection)
+[ACQUIRED] RECON-03 (Text Log)  : Recon/whatweb.txt (LiteSpeed / HTTP 403 fingerprint)
+[ACQUIRED] RECON-04 (Text Log)  : Recon/headers.txt (LiteSpeed HTTP/2 response headers)
+[ACQUIRED] M1-01 (Screenshot)   : M1/login bypass.png (SQLi login entry at /patient/login.php)
+[ACQUIRED] M1-02 (Screenshot)   : M1/proof of bypass.png (Authenticated portal with 3 reports)
+[ACQUIRED] M1-03 (Binary PDFs)  : M1/patient_report_{1,2,3}.pdf (3 exfiltrated encrypted PDFs)
+[ACQUIRED] M2-01 (Text Log)     : M2/all_reports_metadata.txt (ExifTool comment leak to /old)
+[ACQUIRED] M2-02 (Screenshot)   : Screenshots/password cracking.png (JTR dictionary attack)
+[ACQUIRED] M2-03 (Screenshot)   : Screenshots/patient1.png (Decrypted S. Dlamini pathology report)
+[ACQUIRED] M2-04 (Screenshot)   : Screenshots/patient2.png (Decrypted P. Reddy pathology report)
+[ACQUIRED] M2-05 (Screenshot)   : Screenshots/patient3.png (Decrypted E. Thompson pathology report)
+[ACQUIRED] M3-01 (Screenshot)   : Screenshots/exposed db.png (Direct HTTP access to /old backup)
+[ACQUIRED] M3-02 (Text Hash)    : M3/backup_hash.txt (SHA-256: 15d8b49ae104b073d5b0a7...)
+[ACQUIRED] M3-03 (Data Table)   : M3/employee_salary_details.txt & department_salary_analysis.txt
+[ACQUIRED] M3-04 (Data Table)   : M3/shareholder_details.txt & shareholder_distribution.txt
+[ACQUIRED] M3-FILE (SQL Archive): M3/mediroza_db_backup_2019.sql (6,346 bytes MySQL dump)
+[ACQUIRED] M2-HASH (Hash File)  : M2/hash.txt (Extracted $pdf$2*3*128* hashes)
+
+================================================================================
+3. MISSING SCREENSHOTS CHECKLIST (MARKED AS REQUIRED PLACEHOLDERS)
+================================================================================
+The following 9 specific visual screenshots are marked as required in the report:
+
+--- RECONNAISSANCE PHASE ---
+[ ] ITEM ID: RECON-01-SS
+    Description: Terminal screenshot of CLI execution:
+                 $ dig medirozahospital.com
+    Current Evidence: Raw log available in Recon/dns.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - DNS Enumeration Output]
+
+[ ] ITEM ID: RECON-02-SS
+    Description: Terminal screenshot of CLI execution:
+                 $ nmap -sV -p 80,443 medirozahospital.com
+    Current Evidence: Raw log available in Recon/nmap.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - Nmap Port and Service Scan]
+
+[ ] ITEM ID: RECON-03-SS
+    Description: Terminal screenshot of CLI execution:
+                 $ whatweb https://medirozahospital.com
+    Current Evidence: Raw log available in Recon/whatweb.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - Web Technology Fingerprinting]
+
+[ ] ITEM ID: RECON-04-SS
+    Description: Terminal screenshot of CLI execution:
+                 $ curl -I https://medirozahospital.com
+    Current Evidence: Raw log available in Recon/headers.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - HTTP Response Header Inspection]
+
+--- MILESTONE M1: INITIAL ACCESS ---
+[ ] ITEM ID: M1-03-SS
+    Description: Local terminal or file browser screenshot showing exfiltrated
+                 files: patient_report_1.pdf, patient_report_2.pdf, patient_report_3.pdf.
+    Current Evidence: The 3 binary PDF files exist on disk in M1/.
+    Report Status: Documented via [SCREENSHOT REQUIRED - Local File Listing Confirmation]
+
+--- MILESTONE M2: DATA RECOVERY & METADATA FORENSICS ---
+[ ] ITEM ID: M2-01-SS
+    Description: Terminal screenshot of ExifTool execution against patient_report_3_unlocked.pdf:
+                 $ exiftool patient_report_3_unlocked.pdf | grep -E "Author|Comments"
+                 showing "Author: j.malik" and "Comments: DB backup moved to /old..."
+    Current Evidence: Complete metadata text in M2/all_reports_metadata.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - ExifTool Metadata Inspection Output]
+
+--- MILESTONE M3: CRITICAL DATA EXPOSURE ---
+[ ] ITEM ID: M3-02-SS
+    Description: Terminal screenshot of cryptographic hash verification:
+                 $ sha256sum mediroza_db_backup_2019.sql
+    Current Evidence: Cryptographic hash verified in M3/backup_hash.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - Cryptographic SHA-256 Hash Verification]
+
+[ ] ITEM ID: M3-03-SS
+    Description: MariaDB terminal screenshot showing database import and salary analysis:
+                 $ mysql -u root -p mediroza_hr < mediroza_db_backup_2019.sql
+                 MariaDB [mediroza_hr]> SELECT department, COUNT(*), SUM(monthly_salary_zar)...
+    Current Evidence: Pre-computed tables in M3/department_salary_analysis.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - MariaDB Salary Analysis Output]
+
+[ ] ITEM ID: M3-04-SS
+    Description: MariaDB terminal screenshot showing shareholder equity distribution:
+                 MariaDB [mediroza_hr]> SELECT * FROM shareholders;
+    Current Evidence: Pre-computed tables in M3/shareholder_details.txt.
+    Report Status: Documented via [SCREENSHOT REQUIRED - MariaDB Shareholder Analysis Output]
+
+================================================================================
+4. REPLICATION / GAP RESOLUTION INSTRUCTIONS (IF TESTBED PROVIDED)
+================================================================================
+If client or internship administrators grant access to an isolated offline laboratory
+mirror of the target environment, the following non-intrusive commands can be
+executed to capture the missing terminal screens without impacting production:
+
+1. Recon CLI Terminal Screen:
+   tmux new-session -s recon "dig medirozahospital.com; nmap -sV -p 80,443 medirozahospital.com; whatweb https://medirozahospital.com; curl -I https://medirozahospital.com"
+
+2. Metadata Forensics Screen:
+   exiftool week4/M2/patient_report_3_unlocked.pdf
+
+3. Local MariaDB Analysis Screen:
+   mysql -u root -e "CREATE DATABASE IF NOT EXISTS mediroza_hr; USE mediroza_hr; SOURCE week4/M3/mediroza_db_backup_2019.sql; SHOW TABLES; SELECT * FROM staff LIMIT 5; SELECT * FROM shareholders;"
+
+================================================================================
+End of Evidence Gap Audit & Missing Evidence Checklist
+================================================================================

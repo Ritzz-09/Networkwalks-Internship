@@ -16,7 +16,7 @@ This repository serves as the official portfolio and technical documentation for
 | **Week 1** | **Cybersecurity Laboratory Environment Setup** | Oracle VirtualBox, Kali Linux, NAT Network (`10.0.0.0/24`), Routing, ICMP & DNS Verification | [📁 Week 1 Documentation](week1/) | ✅ Completed |
 | **Week 2** | **Information Gathering, Footprinting & Network Scanning** | OSINT, WHOIS, WhatWeb, nslookup, cURL, WAFW00F, DNSRecon, Zenmap / Nmap (`192.168.1.0/24`) | [📁 Week 2 Documentation](week2/) | ✅ Completed |
 | **Week 3** | **Password Cracking, Hash Extraction & Cryptanalysis** | John the Ripper (JTR), RockYou wordlist, PDF Hash Extraction (`$pdf$4*4*128*...`), Networkwalks Online Tools | [📁 Week 3 Documentation](week3/) | ✅ Completed |
-| **Week 4** | *Upcoming Module* | *To be updated* | *TBD* | ⏳ Pending |
+| **Week 4** | **Web Application Penetration Testing & Forensic Assessment** | Black-box Pentest, SQL Injection Auth Bypass, Cryptanalysis, ExifTool Metadata Leaks, MySQL Dump Analysis, Professional Report | [📁 Week 4 Documentation](week4/) | ✅ Completed |
 
 ---
 
@@ -61,6 +61,25 @@ This repository serves as the official portfolio and technical documentation for
   * 🚩 Flag 2: `nw{networkwalks_flag1_jtr_270521_1}`
 
 👉 **Read the full module runbook and evidence report:** [**week3/README.md**](week3/)
+
+### [Week 4: Web Application Penetration Testing & Forensic Assessment (Mediroza General Hospital)](week4/)
+
+* **Target Organization:** Mediroza General Hospital (14 Cedar Avenue, Johannesburg, South Africa)
+* **Target Domain:** `https://medirozahospital.com` (Resolved Host IP: `199.188.201.16` / `server274-1.web-hosting.com`)
+* **Engagement Milestones:**
+  * **Reconnaissance:** DNS A-record enumeration (`dig`), Nmap port 80/443 detection (HAProxy 2.0.0+), WhatWeb LiteSpeed fingerprinting, and HTTP/2 header inspection.
+  * **M1 — Initial Access:** Identified patient login portal (`/patient/login.php`), executed SQL Injection authentication bypass (`admin' -- `), accessed portal dashboard (`/patient/portal.php`), and exfiltrated 3 locked patient pathology reports.
+  * **M2 — Cryptanalysis & Forensics:** Analyzed 128-bit RC4 PDF encryption, executed offline dictionary attack with John the Ripper (`rockyou.txt`) cracking all 3 passwords in under 1 second, unlocked diagnostic reports, and extracted ExifTool metadata revealing comment leak by IT Admin `j.malik` referencing `/old`.
+  * **M3 — Critical Data Exposure:** Discovered publicly accessible database dump at `https://medirozahospital.com/old/mediroza_db_backup_2019.sql`, parsed `mediroza_hr` schema, extracted records for 30 employees (National IDs, salaries totaling ZAR 2,027,000/mo), and mapped 10 corporate shareholders (1,000,000 shares).
+  * **M4 — Professional Reporting & Remediation:** Authored formal 21-page publication-grade PDF and DOCX penetration testing reports, Excel evidence register, missing evidence checklist, and executive summary.
+* **Formal Submission Deliverables:**
+  * 📄 [**Mediroza_Penetration_Test_Report.docx**](week4/M4_Report/Mediroza_Penetration_Test_Report.docx) — Formatted Microsoft Word Consulting Report (1.0 MB)
+  * 📑 [**Mediroza_Penetration_Test_Report.pdf**](week4/M4_Report/Mediroza_Penetration_Test_Report.pdf) — Print-ready 21-page WeasyPrint Publication PDF (1.1 MB)
+  * 📊 [**Evidence_Register.xlsx**](week4/M4_Report/Evidence_Register.xlsx) — Three-sheet Excel Evidence Cross-Reference Register
+  * 📋 [**Missing_Evidence_Checklist.txt**](week4/M4_Report/Missing_Evidence_Checklist.txt) — Evidence Inventory Gap Audit
+  * 📝 [**Report_Summary.txt**](week4/M4_Report/Report_Summary.txt) — High-Level Executive Debriefing Document
+
+👉 **Read the full module runbook and evidence report:** [**week4/README.md**](week4/)
 
 ---
 
@@ -138,6 +157,21 @@ Networkwalks-Internship/
         ├── hash-calculator.png                   # Evidence: Networkwalks hash extraction
         ├── password-cracker.png                  # Evidence: Web dictionary attack match
         └── opened pdf.png                        # Evidence: Unlocked PDF with flag display
+└── week4/                                        # Week 4: Mediroza Penetration Test & Forensics
+    ├── README.md                                 # Master Mediroza report & operational runbook
+    ├── Recon/                                    # Target reconnaissance & service enumeration logs
+    ├── M1/                                       # Milestone 1: Initial access & SQLi login bypass
+    ├── M2/                                       # Milestone 2: PDF hash cracking & metadata forensics
+    ├── M3/                                       # Milestone 3: Exposed MySQL backup & salary analysis
+    ├── Screenshots/                              # Original unedited empirical evidence captures
+    ├── scripts/                                  # Report generation & redaction automation suite
+    └── M4_Report/                                # Formal Week 4 Technical Submission Deliverables
+        ├── Mediroza_Penetration_Test_Report.docx # Formatted Word Document Report (1.0 MB)
+        ├── Mediroza_Penetration_Test_Report.pdf  # Publication-Grade 21-Page PDF Report (1.1 MB)
+        ├── Mediroza_Penetration_Test_Report.md   # Source Technical Report in Markdown
+        ├── Evidence_Register.xlsx                # Formatted Excel Cross-Reference Register
+        ├── Missing_Evidence_Checklist.txt        # Evidence Gap Audit & Placeholder Register
+        └── Report_Summary.txt                    # Executive Debriefing & Remediation Roadmap
 ```
 
 ---

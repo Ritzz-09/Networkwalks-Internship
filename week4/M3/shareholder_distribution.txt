@@ -1,0 +1,3 @@
+share_class	shareholder_count	ownership_percentage	total_shares
+Ordinary	8	88.00	880000
+Preferential	2	12.00	120000

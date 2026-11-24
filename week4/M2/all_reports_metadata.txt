@@ -1,0 +1,76 @@
+========== patient_report_1_unlocked.pdf ==========
+---- ExifTool ----
+ExifTool Version Number         : 13.55
+---- System ----
+File Name                       : patient_report_1_unlocked.pdf
+Directory                       : .
+File Size                       : 2.8 kB
+File Modification Date/Time     : 2026:11:24 06:37:20+05:30
+File Access Date/Time           : 2026:11:24 06:41:34+05:30
+File Inode Change Date/Time     : 2026:11:24 06:41:34+05:30
+File Permissions                : -rw-rw-r--
+---- File ----
+File Type                       : PDF
+File Type Extension             : pdf
+MIME Type                       : application/pdf
+---- PDF ----
+PDF Version                     : 1.4
+Linearized                      : No
+Author                          : Mediroza Diagnostics Lab
+Creator                         : Mediroza CMS 1.4.2
+Keywords                        : pathology, fbc, patient report
+Producer                        : Mediroza Lab Reporting Module
+Subject                         : Full Blood Count
+Title                           : Pathology Report - S. Dlamini
+Page Count                      : 1
+========== patient_report_2_unlocked.pdf ==========
+---- ExifTool ----
+ExifTool Version Number         : 13.55
+---- System ----
+File Name                       : patient_report_2_unlocked.pdf
+Directory                       : .
+File Size                       : 2.8 kB
+File Modification Date/Time     : 2026:11:24 06:38:14+05:30
+File Access Date/Time           : 2026:11:24 06:49:41+05:30
+File Inode Change Date/Time     : 2026:11:24 06:49:41+05:30
+File Permissions                : -rw-rw-r--
+---- File ----
+File Type                       : PDF
+File Type Extension             : pdf
+MIME Type                       : application/pdf
+---- PDF ----
+PDF Version                     : 1.4
+Linearized                      : No
+Author                          : Mediroza Diagnostics Lab
+Creator                         : Mediroza CMS 1.4.2
+Keywords                        : pathology, lipids, patient report
+Producer                        : Mediroza Lab Reporting Module
+Subject                         : Lipid Profile
+Title                           : Pathology Report - P. Reddy
+Page Count                      : 1
+========== patient_report_3_unlocked.pdf ==========
+---- ExifTool ----
+ExifTool Version Number         : 13.55
+---- System ----
+File Name                       : patient_report_3_unlocked.pdf
+Directory                       : .
+File Size                       : 2.9 kB
+File Modification Date/Time     : 2026:11:24 06:41:09+05:30
+File Access Date/Time           : 2026:11:24 06:52:08+05:30
+File Inode Change Date/Time     : 2026:11:24 06:52:07+05:30
+File Permissions                : -rw-rw-r--
+---- File ----
+File Type                       : PDF
+File Type Extension             : pdf
+MIME Type                       : application/pdf
+---- PDF ----
+PDF Version                     : 1.4
+Linearized                      : No
+Author                          : j.malik
+Comments                        : DB backup moved to /old before site migration, do not delete
+Creator                         : Mediroza CMS 1.4.2
+Keywords                        : pathology, patient report
+Producer                        : Mediroza Lab Reporting Module
+Subject                         : Full Blood Count
+Title                           : Pathology Report - E. Thompson
+Page Count                      : 1

@@ -1,0 +1,127 @@
+================================================================================
+                    MEDIROZA GENERAL HOSPITAL PENETRATION TEST
+                            EXECUTIVE REPORT SUMMARY
+================================================================================
+Engagement Title        : Black-box Web Application & Forensic Security Assessment
+Target Organization     : Mediroza General Hospital (Johannesburg, South Africa)
+Target Domain / URL     : https://medirozahospital.com (IP: 199.188.201.16)
+Engagement Framework    : Networkwalks Cybersecurity Internship (Week 4, Batch B083)
+Testing Period          : 5-Day Authorized Black-Box Engagement
+Lead Security Analyst   : Rithish S P (Security Consultant & Forensic Analyst)
+Classification          : CONFIDENTIAL / RESTRICTED DISTRIBUTION
+Deliverable Version     : 1.0 (Final)
+
+================================================================================
+1. EXECUTIVE BRIEFING & PURPOSE
+================================================================================
+Networkwalks Security Services was formally engaged to perform an authorized,
+black-box cybersecurity assessment of Mediroza General Hospital's public web presence
+and patient portal (https://medirozahospital.com). Testing was conducted under strict
+rules of engagement authorized by the Networkwalks Project Brief, prohibiting denial-
+of-service, social engineering, or out-of-scope lateral movement.
+
+The objective was to evaluate the confidentiality, integrity, and availability of
+hospital assets across four defined operational milestones:
+  - M1: Initial Access (Evaluating patient portal authentication & report retrieval)
+  - M2: Cryptographic Analysis (Assessing PDF encryption & metadata forensics)
+  - M3: Sensitive Data Exposure (Investigating database backups & HR intelligence)
+  - M4: Professional Penetration Testing Deliverables & Strategic Remediation
+
+================================================================================
+2. KEY MILESTONE FINDINGS SUMMARY
+================================================================================
+- RECONNAISSANCE:
+  External footprinting identified a LiteSpeed Web Server behind an HAProxy reverse
+  proxy (ports 80 and 443). Direct HTTP requests to the web root returned HTTP 403,
+  indicating surface-level access restrictions but leaving sub-applications exposed.
+
+- MILESTONE M1 – INITIAL ACCESS (PATIENT PORTAL COMPROMISE):
+  The patient login portal (/patient/login.php) was found to be vulnerable to classic
+  SQL Injection in the username parameter. Submitting a SQL comment payload (' -- )
+  completely bypassed authentication without valid credentials. The tester gained
+  unauthorized access to the authenticated portal dashboard (/patient/portal.php) and
+  successfully exfiltrated three confidential patient pathology reports.
+
+- MILESTONE M2 – CRYPTOGRAPHIC DATA RECOVERY & FORENSIC METADATA LEAK:
+  The exfiltrated patient reports were protected with Adobe Standard Security (128-bit
+  RC4 / Revision 3), but utilized trivial user passwords. A dictionary attack utilizing
+  John the Ripper and the standard rockyou.txt wordlist recovered all three passwords
+  in under one second. Furthermore, ExifTool metadata inspection of the decrypted
+  reports uncovered an unauthorized administrative comment by IT Admin "j.malik"
+  revealing that a database backup had been relocated to "/old".
+
+- MILESTONE M3 – CRITICAL DATABASE BACKUP EXPOSURE & HR DATA BREACH:
+  Navigating to the disclosed directory (https://medirozahospital.com/old/mediroza_db_backup_2019.sql)
+  confirmed that an unencrypted, 6.3 KB MySQL database dump ("mediroza_hr") was publicly
+  accessible without authentication. Analysis of the SQL dump revealed:
+    * Complete personnel records for 30 hospital employees, including National ID
+      numbers, personal mobile numbers, email addresses, job titles, and salaries.
+    * A total monthly payroll of ZAR 2,027,000 (Average monthly salary: ZAR 67,566.67;
+      ranging from ZAR 19,000 to ZAR 160,000 across 17 hospital departments).
+    * Complete shareholder equity records for 10 investors totaling 1,000,000 shares
+      (88% Ordinary shares, 12% Preferential shares).
+  [Note: The database backup dates from August 2019; while historical, the exposure
+   constitutes an egregious breach of statutory data protection obligations].
+
+================================================================================
+3. CONSOLIDATED VULNERABILITY REGISTER
+================================================================================
++---------+------------------------------------------------+----------+-----------+
+| ID      | Vulnerability Title                            | Severity | CVSS v3.1 |
++---------+------------------------------------------------+----------+-----------+
+| F-01    | Unauthorized Access to Confidential Reports    | CRITICAL | 9.1       |
+| F-02    | Weak Password Protection on Confidential PDFs  | HIGH     | 7.5       |
+| F-03    | Publicly Accessible SQL Backup in Web Root     | CRITICAL | 9.8       |
+| F-04    | Exposure of Staff Salary & Shareholder Info    | HIGH     | 7.5       |
++---------+------------------------------------------------+----------+-----------+
+
+* Relationship Note: F-03 represents the architectural storage misconfiguration
+  (leaving database archives in public web directories), while F-04 represents the
+  consequential breach of confidentiality, privacy, and regulatory compliance.
+
+================================================================================
+4. REGULATORY & BUSINESS IMPACT (POPIA COMPLIANCE)
+================================================================================
+The vulnerabilities identified expose Mediroza General Hospital to catastrophic
+regulatory, operational, and reputational liabilities under the Protection of
+Personal Information Act (POPIA Act 4 of 2013) and international standards:
+  - Compromise of Special Personal Information (Patient health / laboratory results)
+  - Mass exposure of employee Personal Identifiable Information (PII) & National IDs
+  - Unlawful disclosure of confidential executive remuneration and shareholder equity
+  - Substantial exposure to statutory fines (up to ZAR 10 Million under POPIA Section 107)
+    and class-action civil litigation by affected patients and staff.
+
+================================================================================
+5. TOP 3 IMMEDIATE REMEDIATION PRIORITIES
+================================================================================
+1. IMMEDIATE CONTAINMENT (PRIORITY 1 - IMMEDIATE):
+   Immediately purge the "/old" directory and remove all database backups (.sql, .gz,
+   .bak) from the web root. Implement web server rewrite rules blocking direct HTTP
+   access to hidden directories and database extensions.
+
+2. SECURE AUTHENTICATION RE-ENGINEERING (PRIORITY 1 - 24-48 HOURS):
+   Refactor the patient portal authentication logic (/patient/login.php) to utilize
+   parameterized SQL queries (Prepared Statements via PDO/MySQLi), completely
+   eliminating SQL injection and authentication bypass attack vectors.
+
+3. CRYPTOGRAPHIC & DOCUMENT SECURITY OVERHAUL (PRIORITY 2 - 1-2 WEEKS):
+   Enforce AES-256 (Revision 5/6) encryption on all generated patient laboratory
+   documents. Discontinue weak default passwords; mandate minimum 16-character
+   cryptographically pseudo-random alphanumeric passphrases or authenticated in-portal
+   decryption tokens. Implement pre-release metadata sanitization stripping internal
+   developer comments from generated PDFs.
+
+================================================================================
+6. COMPLETE DELIVERABLE PACKAGE REFERENCE
+================================================================================
+The comprehensive technical findings, evidence analysis, and detailed remediation
+plans are compiled into the following deliverable suite in the M4_Report directory:
+  1. Mediroza_Penetration_Test_Report.docx (Full editable consulting report)
+  2. Mediroza_Penetration_Test_Report.pdf (Print-ready, styled technical document)
+  3. Evidence_Register.xlsx (Three-sheet forensic cross-reference register)
+  4. Missing_Evidence_Checklist.txt (Evidence gap analysis and placeholder index)
+  5. Report_Summary.txt (This executive debriefing document)
+
+================================================================================
+End of Executive Report Summary
+================================================================================
